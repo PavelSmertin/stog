@@ -60,10 +60,18 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     end
     
     def check
-        render :status => 200,
+        if(user_signed_in?)
+            render :status => 200,
             :json => {
                 :success => true,
-                :info => params[:user][:phone],
+                :info => "true",
+                :data => {}
+            }
+        else
+            render :status => 200,
+            :json => {
+                :success => false,
+                :info => "false",
                 :data => {}
             }
 

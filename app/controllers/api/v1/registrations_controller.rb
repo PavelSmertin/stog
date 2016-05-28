@@ -59,6 +59,24 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         end
     end
     
+    def check
+        user = User.find_by_phone(params[:user][:phone])
+        if !user.nil?
+            render :status => 200,
+            :json => {
+                :success => true,
+                :info => "User registered",
+                :data => {}
+            }
+        else
+            render :status => 200,
+            :json => {
+                :success => false,
+                :info => "User not registered",
+                :data => {}
+            }
+    end
+    
     private
     def json_request?
         request.format.json?

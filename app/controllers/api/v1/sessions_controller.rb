@@ -26,16 +26,19 @@
                     current_user.update authentication_token: nil
                     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
                     render :status => 200,
-                    :json => { :success => true,
-                        :info => "Logged out",
-                        :data => {} }
+                            :json => {
+                                :success => true,
+                                :info => "Logged out",
+                                :data => {}
+                            }
                 else
-                render :status => 401,
-                :json => { :success => false,
-                    :info => "Failed to log out. User must be logged in.",
-                    :data => {} }
+                    render :status => 401,
+                            :json => {
+                                :success => false,
+                                :info => "Failed to log out. User must be logged in.",
+                                :data => {}
+                            }
                 end
-
             end
             
             def json_request?

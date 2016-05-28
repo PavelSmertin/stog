@@ -59,24 +59,6 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         end
     end
     
-    def check
-        if(user_signed_in?)
-            render :status => 200,
-            :json => {
-                :success => true,
-                :info => "true",
-                :data => {}
-            }
-        else
-            render :status => 200,
-            :json => {
-                :success => false,
-                :info => "false",
-                :data => {}
-            }
-
-    end
-    
     private
     def json_request?
         request.format.json?

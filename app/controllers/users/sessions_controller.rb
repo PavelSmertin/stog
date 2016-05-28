@@ -1,11 +1,21 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
-def create
-    super do |resource|
-        BackgroundWorker.trigger(resource)
+    def create
+        super do |resource|
+            BackgroundWorker.trigger(resource)
+        end
     end
-end
+
+    def check
+        render :status => 200,
+                :json => {
+                    :success => true,
+                    :info => "true",
+                    :data => {}
+        }
+    end
+        
   # GET /resource/sign_in
   # def new
   #   super

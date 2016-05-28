@@ -63,9 +63,10 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         render :status => 200,
             :json => {
                 :success => true,
-                :info => "User registered",
+                :info => params[:user][:phone],
                 :data => {}
             }
+
     end
     
     private

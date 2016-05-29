@@ -46,12 +46,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
                 :json => {
                     :success => true,
                     :info => "User registered",
-                    :data => {}
+                    :data =>  { :id => user.id }
                 }
         else
             render :status => 200,
                 :json => {
-                    :success => false,
+                    :success => true,
                         :info => "User not registered",
                         :data => {}
                 }

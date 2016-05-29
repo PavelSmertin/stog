@@ -13,7 +13,7 @@ Rails.application.routes.draw do
           delete 'sessions' => 'sessions#destroy', :as => :logout
           post 'register' => 'registrations#create', :as => :register
           delete 'register' => 'registrations#destroy', :as => :delete_account
-          get 'check' => 'registrations#check', :as => :check_account
+          get 'user_check_exist' => 'registrations#check', :as => :check_account
       end
       get 'tags' => 'tags#index'
     end

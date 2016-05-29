@@ -39,6 +39,26 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
     end
     
+    def check
+        user = User.find_by_phone(params[:user_phone])
+        if !user.nil?
+            render :status => 200,
+                :json => {
+                    :success => true,
+                    :info => "User registered",
+                    :data => {}
+                }
+        else
+            render :status => 200,
+                :json => {
+                    :success => false,
+                        :info => "User not registered",
+                        :data => {}
+                }
+        end
+    end
+    
+    
     def destroy
         if user_signed_in?
             resource.destroy

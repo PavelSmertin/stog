@@ -6,15 +6,6 @@ class Users::SessionsController < Devise::SessionsController
             BackgroundWorker.trigger(resource)
         end
     end
-
-    def check
-        render :status => 200,
-                :json => {
-                    :success => true,
-                    :info => "true",
-                    :data => {}
-        }
-    end
         
   # GET /resource/sign_in
   # def new
